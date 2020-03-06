@@ -55,6 +55,21 @@ class PricesModelPrices extends ListModel
         return $query;
     }
 
+    public function getItems()
+    {
+        $items = parent::getItems();
+        $result = array();
+        foreach ($items as $item) {
+            $arr = ['items' => []];
+            $arr['id'] = $item->id;
+            $arr['title'] = $item->title;
+            $url = JRoute::_("index.php?option={$this->option}&amp;task=price.edit&amp;id={$item->id}");
+            $arr['edit_link'] = JHtml::link($url, $item->title);
+            $result['items'][] = $arr;
+        }
+        return $result;
+    }
+
     protected function populateState($ordering = 'p.id', $direction = 'asc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');

@@ -1,84 +1,51 @@
 <?php
-/**
- * @package    prices
- *
- * @author     Антон <your@email.com>
- * @copyright  A copyright
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       http://your.url.com
- */
-
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Toolbar\ToolbarHelper;
 
 defined('_JEXEC') or die;
 
-/**
- * Prices view.
- *
- * @package   prices
- * @since     1.0.0
- */
 class PricesViewPrices extends HtmlView
 {
-	/**
-	 * Prices helper
-	 *
-	 * @var    PricesHelper
-	 * @since  1.0.0
-	 */
-	protected $helper;
+    protected $sidebar = '';
+    public $items, $pagination, $uid, $state, $filterForm, $activeFilters;
 
-	/**
-	 * The sidebar to show
-	 *
-	 * @var    string
-	 * @since  1.0.0
-	 */
-	protected $sidebar = '';
+    public function display($tpl = null)
+    {
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->state = $this->get('State');
+        $this->filterForm = $this->get('FilterForm');
+        $this->activeFilters = $this->get('ActiveFilters');
 
-	/**
-	 * Execute and display a template script.
-	 *
-	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
-	 *
-	 * @return  mixed  A string if successful, otherwise a JError object.
-	 *
-	 * @see     fetch()
-	 * @since   1.0.0
-	 */
-	public function display($tpl = null)
-	{
-		// Show the toolbar
-		$this->toolbar();
+        // Show the toolbar
+        $this->toolbar();
 
-		// Show the sidebar
-		$this->helper = new PricesHelper;
-		$this->helper->addSubmenu('prices');
-		$this->sidebar = HTMLHelper::_('sidebar.render');
+        // Show the sidebar
+        PricesHelper::addSubmenu('prices');
+        $this->sidebar = JHtmlSidebar::render();
 
-		// Display it all
-		return parent::display($tpl);
-	}
+        // Display it all
+        return parent::display($tpl);
+    }
 
-	/**
-	 * Displays a toolbar for a specific page.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.0.0
-	 */
-	private function toolbar()
-	{
-		ToolBarHelper::title(Text::_('COM_PRICES'), '');
+    private function toolbar()
+    {
+        JToolBarHelper::title(JText::sprintf('COM_PRICES_MENU_PRICES'), 'list');
 
-		// Options button.
-		if (Factory::getUser()->authorise('core.admin', 'com_prices'))
-		{
-			ToolBarHelper::preferences('com_prices');
-		}
-	}
+        if (PricesHelper::canDo('core.create'))
+        {
+            JToolbarHelper::addNew('price.add');
+        }
+        if (PricesHelper::canDo('core.edit'))
+        {
+            JToolbarHelper::editList('price.edit');
+        }
+        if (PricesHelper::canDo('core.delete'))
+        {
+            JToolbarHelper::deleteList('COM_PRICES_CONFIRM_REMOVE_PRICE', 'prices.delete');
+        }
+        if (PricesHelper::canDo('core.admin'))
+        {
+            JToolBarHelper::preferences('com_prices');
+        }
+    }
 }
