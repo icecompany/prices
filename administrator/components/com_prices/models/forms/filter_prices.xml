@@ -15,14 +15,14 @@
         <field
                 name="fullordering"
                 type="list"
-                label="COM_COMPANIES_FILTER_SELECT_FULL_ORDERING"
-                description="COM_COMPANIES_FILTER_SELECT_FULL_ORDERING_DESC"
+                label="COM_PRICES_FILTER_SELECT_FULL_ORDERING"
+                description="COM_PRICES_FILTER_SELECT_FULL_ORDERING_DESC"
                 onchange="this.form.submit();"
                 default="title asc"
         >
             <option value="">JGLOBAL_SORT_BY</option>
-            <option value="p.title ASC">COM_PRICES_SORTING_PRICES_TITLE_ASC</option>
-            <option value="p.title DESC">COM_PRICES_SORTING_PRICES_TITLE_DESC</option>
+            <option value="p.title ASC">COM_PRICES_SORTING_TITLE_ASC</option>
+            <option value="p.title DESC">COM_PRICES_SORTING_TITLE_DESC</option>
             <option value="p.id ASC">ID</option>
             <option value="p.id DESC">ID</option>
         </field>
