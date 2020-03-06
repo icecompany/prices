@@ -11,6 +11,7 @@ class PricesModelPrices extends ListModel
             $config['filter_fields'] = array(
                 'p.id',
                 'p.title',
+                'search',
             );
         }
         parent::__construct($config);
