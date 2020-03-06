@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+                name="search"
+                type="text"
+                label="COM_PRICES_FILTER_SECTIONS"
+                description="COM_PRICES_FILTER_SECTIONS"
+                hint="COM_PRICES_FILTER_SECTIONS"
+                autocomplete="off"
+                class="js-stools-search-string"
+        />
+        <field
+                name="price"
+                type="Price"
+                label="COM_PRICES_FILTER_SELECT_PRICE"
+                description="COM_PRICES_FILTER_SELECT_PRICE"
+                onchange="this.form.submit()"
+                >
+            <option value="">COM_PRICES_FILTER_SELECT_PRICE</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="fullordering"
+                type="list"
+                label="COM_PRICES_FILTER_SELECT_FULL_ORDERING"
+                description="COM_PRICES_FILTER_SELECT_FULL_ORDERING_DESC"
+                onchange="this.form.submit();"
+                default="title asc"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="s.title ASC">COM_PRICES_SORTING_TITLE_ASC</option>
+            <option value="s.title DESC">COM_PRICES_SORTING_TITLE_DESC</option>
+            <option value="price ASC">COM_PRICES_SORTING_SECTIONS_PRICE_TITLE_ASC</option>
+            <option value="price DESC">COM_PRICES_SORTING_SECTIONS_PRICE_TITLE_DESC</option>
+            <option value="s.weight ASC">COM_PRICES_SORTING_WEIGHT_ASC</option>
+            <option value="s.weight DESC">COM_PRICES_SORTING_WEIGHT_DESC</option>
+            <option value="s.id ASC">ID</option>
+            <option value="s.id DESC">ID</option>
+        </field>
+        <field
+                name="limit"
+                type="limitbox"
+                class="input-mini"
+                default="0"
+                label="COM_PRICES_FILTER_SELECT_LIMIT"
+                description="COM_PRICES_FILTER_SELECT_LIMIT_DESC"
+                onchange="this.form.submit();"
+        />
+    </fields>
+</form>
