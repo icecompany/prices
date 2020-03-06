@@ -11,9 +11,12 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
         №
     </th>
     <th>
-        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_TITLE', 'p.title', $listDirn, $listOrder); ?>
+        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_TITLE', 's.title', $listDirn, $listOrder); ?>
+    </th>
+    <th>
+        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_SECTIONS_PRICE_TITLE', 'price', $listDirn, $listOrder); ?>
     </th>
     <th style="width: 1%;">
-        <?php echo JHtml::_('searchtools.sort', 'ID', 'p.id', $listDirn, $listOrder); ?>
+        <?php echo JHtml::_('searchtools.sort', 'ID', 's.id', $listDirn, $listOrder); ?>
     </th>
 </tr>

@@ -23,8 +23,8 @@
             <option value="">JGLOBAL_SORT_BY</option>
             <option value="p.title ASC">COM_PRICES_SORTING_TITLE_ASC</option>
             <option value="p.title DESC">COM_PRICES_SORTING_TITLE_DESC</option>
-            <option value="p.id ASC">ID</option>
-            <option value="p.id DESC">ID</option>
+            <option value="p.id ASC">COM_PRICES_SORTING_ID_ASC</option>
+            <option value="p.id DESC">COM_PRICES_SORTING_ID_DESC</option>
         </field>
         <field
                 name="limit"
