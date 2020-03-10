@@ -10,17 +10,17 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
     <th style="width: 1%;">
         №
     </th>
-    <th>
+    <th style="width: 50%">
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_TITLE', 'i.title', $listDirn, $listOrder); ?>
     </th>
-    <th>
+    <th style="width: 7%;">
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_COST', 'i.price_rub', $listDirn, $listOrder); ?>
     </th>
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_SECTION_TITLE', 'section', $listDirn, $listOrder); ?>
     </th>
     <th>
-        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_PRICE_TITLE', 'i.price_rub', $listDirn, $listOrder); ?>
+        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_PRICE_TITLE', 'price', $listDirn, $listOrder); ?>
     </th>
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_ITEM_HEAD_STOP', 'i.disabled', $listDirn, $listOrder); ?>
