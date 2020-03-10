@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_prices/models/rules">
+    <fieldset name="general">
+        <field
+                name="id"
+                type="hidden"
+        />
+        <field
+                name="title"
+                type="text"
+                label="COM_PRICES_FORM_TITLE"
+                description="COM_PRICES_FORM_ITEM_TITLE_DESC"
+                hint="COM_PRICES_FORM_ITEM_TITLE_HINT"
+                autocomplete="off"
+                required="true"
+                class="span12"
+        />
+        <field
+                name="title_en"
+                type="text"
+                label="COM_PRICES_FORM_TITLE_EN"
+                description="COM_PRICES_FORM_ITEM_TITLE_EN_DESC"
+                default=""
+                autocomplete="off"
+                class="span12"
+        />
+        <field
+                name="sectionID"
+                type="Section"
+                label="COM_PRICES_FORM_ITEM_SECTION"
+                description="COM_PRICES_FORM_ITEM_SECTION_DESC"
+                required="true"
+                filter="integer"
+                class="span12"
+        />
+        <field
+                name="appID"
+                type="App"
+                label="COM_PRICES_FORM_ITEM_APP"
+                description="COM_PRICES_FORM_ITEM_APP_DESC"
+                required="true"
+                filter="integer"
+                class="span12"
+        />
+        <field
+                name="unit_1_ID"
+                type="Unit"
+                label="COM_PRICES_FORM_ITEM_UNIT"
+                description="COM_PRICES_FORM_ITEM_UNIT_DESC"
+                required="true"
+                filter="integer"
+                class="span12"
+        />
+        <field
+                name="unit_2_ID"
+                type="Unit"
+                label="COM_PRICES_FORM_ITEM_UNIT_2"
+                description="COM_PRICES_FORM_ITEM_UNIT_2_DESC"
+                class="span12"
+                default=""
+        >
+            <option value="">COM_PRICES_ITEM_UNIT_2_NOT_USED</option>
+        </field>
+    </fieldset>
+    <fieldset name="price">
+        <field
+                name="price_rub"
+                type="text"
+                label="COM_PRICES_FORM_ITEM_PRICE_RUB"
+                description="COM_PRICES_FORM_ITEM_PRICE_RUB_DESC"
+                hint="100.00"
+                message="COM_PRICES_FORM_ITEM_PRICE_RUB_MESSAGE"
+                autocomplete="off"
+                required="true"
+                filter="double"
+                maxlenght="12"
+                class="span12"
+                validate="cost"
+        />
+        <field
+                name="price_usd"
+                type="text"
+                label="COM_PRICES_FORM_ITEM_PRICE_USD"
+                description="COM_PRICES_FORM_ITEM_PRICE_USD_DESC"
+                hint="100.00"
+                message="COM_PRICES_FORM_ITEM_PRICE_USD_MESSAGE"
+                autocomplete="off"
+                required="true"
+                filter="double"
+                maxlenght="9"
+                class="span12"
+                validate="cost"
+        />
+        <field
+                name="price_eur"
+                type="text"
+                label="COM_PRICES_FORM_ITEM_PRICE_EUR"
+                description="COM_PRICES_FORM_ITEM_PRICE_EUR_DESC"
+                hint="100.00"
+                message="COM_PRICES_FORM_ITEM_PRICE_EUR_MESSAGE"
+                autocomplete="off"
+                required="true"
+                filter="double"
+                maxlenght="9"
+                class="span12"
+                validate="cost"
+        />
+        <field
+                name="column_1"
+                type="list"
+                label="COM_PRICES_FORM_ITEM_COLUMN_1"
+                description="COM_PRICES_FORM_ITEM_COLUMN_1_DESC"
+                required="true"
+                filter="double"
+                default="1.00"
+                class="span12"
+        >
+            <option value="1.00">0%</option>
+            <option value="1.50">50%</option>
+            <option value="2.00">100%</option>
+        </field>
+        <field
+                name="column_2"
+                type="list"
+                label="COM_PRICES_FORM_ITEM_COLUMN_2"
+                description="COM_PRICES_FORM_ITEM_COLUMN_2_DESC"
+                required="true"
+                filter="double"
+                default="1.50"
+                class="span12"
+        >
+            <option value="1.0">0%</option>
+            <option value="1.50">50%</option>
+            <option value="2.00">100%</option>
+        </field>
+        <field
+                name="column_3"
+                type="list"
+                label="COM_PRICES_FORM_ITEM_COLUMN_3"
+                description="COM_PRICES_FORM_ITEM_COLUMN_3_DESC"
+                required="true"
+                filter="double"
+                default="2.00"
+                class="span12"
+        >
+            <option value="1.00">0%</option>
+            <option value="1.50">50%</option>
+            <option value="2.00">100%</option>
+        </field>
+    </fieldset>
+    <fieldset name="advanced">
+        <field
+                name="type"
+                type="list"
+                label="COM_PRICES_FORM_ITEM_TYPE"
+                description="COM_PRICES_FORM_ITEM_TYPE_DESC"
+                default=""
+                class="span12"
+        >
+            <option value="">COM_PRICES_ITEM_TYPE_SIMPLE</option>
+            <option value="square">COM_PRICES_ITEM_TYPE_SQUARE</option>
+            <option value="electric">COM_PRICES_ITEM_TYPE_ELECTRIC</option>
+            <option value="internet">COM_PRICES_ITEM_TYPE_INTERNET</option>
+            <option value="multimedia">COM_PRICES_ITEM_TYPE_MULTIMEDIA</option>
+            <option value="water">COM_PRICES_ITEM_TYPE_WATER</option>
+            <option value="cleaning">COM_PRICES_ITEM_TYPE_CLEANING</option>
+            <option value="badge">COM_PRICES_ITEM_TYPE_BADGE</option>
+        </field>
+        <field
+                name="disabled"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                default="0"
+                label="COM_PRICES_FORM_ITEM_DISABLED"
+                description="COM_PRICES_FORM_ITEM_DISABLED_DESC"
+                required="true"
+                filter="int"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="weight"
+                type="text"
+                label="COM_PRICES_FORM_WEIGHT"
+                description="COM_PRICES_FORM_WEIGHT_DESC"
+                hint="0"
+                maxlenght="4"
+                message="COM_PRICES_FORM_WEIGHT_MESSAGE"
+                default="0"
+                required="true"
+                filter="int"
+                class="span12"
+                validate="weight"
+        />
+    </fieldset>
+</form>
