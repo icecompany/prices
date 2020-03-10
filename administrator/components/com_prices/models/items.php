@@ -11,9 +11,12 @@ class PricesModelItems extends ListModel
             $config['filter_fields'] = array(
                 'i.id',
                 'i.title',
+                'i.price_rub',
                 'i.weight',
+                'i.disabled',
                 'section',
                 'price',
+                'disabled',
                 'search',
             );
         }
@@ -66,6 +69,11 @@ class PricesModelItems extends ListModel
             $query->where("s.priceID = {$this->_db->q($price)}");
         }
 
+        $disabled = $this->getState('filter.disabled');
+        if (is_numeric($disabled)) {
+            $query->where("i.disabled = {$this->_db->q($disabled)}");
+        }
+
         $query->order($db->escape($orderCol . ' ' . $orderDirn));
         $this->setState('list.limit', $limit);
 
@@ -83,8 +91,9 @@ class PricesModelItems extends ListModel
             $arr['price'] = $item->price;
             $arr['section'] = $item->section;
             $arr['weight'] = $item->weight;
-            $arr['disabled'] = $item->disabled;
-            $item_type = mb_strtoupper($item->type);
+            $arr['disabled'] = JText::sprintf((!$item->disabled) ? 'JNO' : 'JYES');
+            $arr['price_rub'] = JText::sprintf("COM_PRICES_CURRENCY_VALUE_RUB", number_format($item->price_rub, 0, '.', ' '));
+            $item_type = mb_strtoupper($item->type ?? 'simple');
             $arr['type'] = JText::sprintf("COM_PRICES_ITEM_TYPE_{$item_type}");
             $arr['column_1'] = sprintf("%d%%", $this->convertToPercent($item->column_1));
             $arr['column_2'] = sprintf("%d%%", $this->convertToPercent($item->column_2));
@@ -101,7 +110,7 @@ class PricesModelItems extends ListModel
         return (int) $value * 100 - 100;
     }
 
-    protected function populateState($ordering = 's.id', $direction = 'asc')
+    protected function populateState($ordering = 'i.weight', $direction = 'asc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
@@ -109,6 +118,8 @@ class PricesModelItems extends ListModel
         $this->setState('filter.price', $price);
         $section = $this->getUserStateFromRequest($this->context . '.filter.section', 'filter_section');
         $this->setState('filter.section', $section);
+        $disabled = $this->getUserStateFromRequest($this->context . '.filter.disabled', 'filter_disabled');
+        $this->setState('filter.disabled', $disabled);
         parent::populateState($ordering, $direction);
         PricesHelper::check_refresh();
     }
@@ -118,6 +129,7 @@ class PricesModelItems extends ListModel
         $id .= ':' . $this->getState('filter.search');
         $id .= ':' . $this->getState('filter.price');
         $id .= ':' . $this->getState('filter.section');
+        $id .= ':' . $this->getState('filter.disabled');
         return parent::getStoreId($id);
     }
 
