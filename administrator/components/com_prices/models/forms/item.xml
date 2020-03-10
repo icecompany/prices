@@ -193,5 +193,13 @@
                 class="span12"
                 validate="weight"
         />
+        <field
+                name="watchers"
+                type="Manager"
+                label="COM_PRICES_FORM_ITEM_WATCHERS"
+                description="COM_PRICES_FORM_ITEM_WATCHERS_DESC"
+                multiple="true"
+                class="span12"
+        />
     </fieldset>
 </form>

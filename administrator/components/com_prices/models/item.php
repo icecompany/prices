@@ -1,17 +1,64 @@
 <?php
 defined('_JEXEC') or die;
 use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\MVC\Model\ListModel;
 
 class PricesModelItem extends AdminModel {
 
     public function getItem($pk = null)
     {
-        return parent::getItem($pk);
+        $item = parent::getItem($pk);
+        if ($item->id !== null) {
+            $item->watchers = $this->getWatchers($item->id);
+        }
+        return $item;
     }
 
     public function save($data)
     {
-        return parent::save($data);
+        $s1 = parent::save($data);
+        $itemID = $data['id'] ?? JFactory::getDbo()->insertid();
+        $s2 = $this->saveWatchers((int) $itemID, (array) $data['watchers'] ?? []);
+        return $s1 && $s2;
+    }
+
+    private function getWatchers(int $id): array
+    {
+        $model = ListModel::getInstance('Watchers', 'PricesModel', array('itemID' => $id));
+        return $model->getItems();
+    }
+
+    private function saveWatchers(int $itemID, array $watchers = array()): bool
+    {
+        $current = $this->getWatchers($itemID);
+        if (empty($current)) {
+            if (empty($watchers)) return true;
+            foreach ($watchers as $watcher)
+                if (!$this->addWatcher($itemID, $watcher)) return false;
+        }
+        else {
+            foreach ($watchers as $item)
+                if (($key = array_search($item, $current)) === false)
+                    if (!$this->addWatcher($itemID, $item)) return false;
+            foreach ($current as $item)
+                if (($key = array_search($item, $watchers)) === false)
+                    if (!$this->deleteWatcher($itemID, $item)) return false;
+        }
+        return true;
+    }
+
+    private function addWatcher(int $itemID, int $userID): bool
+    {
+        $table = $this->getTable('Watchers', 'TablePrices');
+        $data = array('id' => null, 'itemID' => $itemID, 'userID' => $userID);
+        return $table->save($data);
+    }
+
+    private function deleteWatcher(int $itemID, int $userID): bool
+    {
+        $table = $this->getTable('Watchers', 'TablePrices');
+        $table->load(array('itemID' => $itemID, 'userID' => $userID));
+        return $table->delete($table->id);
     }
 
     public function getTable($name = 'Items', $prefix = 'TablePrices', $options = array())

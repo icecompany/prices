@@ -3,7 +3,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
 
 defined('_JEXEC') or die;
 
-class PriceControllerItems extends AdminController
+class PricesControllerItems extends AdminController
 {
     public function getModel($name = 'Item', $prefix = 'PricesModel', $config = array())
     {
