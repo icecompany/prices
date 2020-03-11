@@ -7,7 +7,7 @@
 	<authorUrl>http://your.url.com</authorUrl>
 	<copyright>A copyright</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<description>COM_PRICES_XML_DESCRIPTION</description>
 
 	<!-- Scripts to run on installation -->
@@ -54,7 +54,11 @@
 				Note that all & must be escaped to &amp; for the file to be valid
 				XML and be parsed by the installer
 			-->
-			<menu link="option=com_prices">COM_PRICES</menu>
+			<menu view="items">COM_PRICES_MENU_ITEMS</menu>
+			<menu view="prices">COM_PRICES_MENU_PRICES</menu>
+			<menu view="watchers">COM_PRICES_MENU_WATCHERS</menu>
+			<menu view="sections">COM_PRICES_MENU_SECTIONS</menu>
+			<menu view="units">COM_PRICES_MENU_UNITS</menu>
 		</submenu>
 
 		<!-- Core files -->
