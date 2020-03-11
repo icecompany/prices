@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_prices/models/rules">
+    <fieldset name="general">
+        <field
+                name="id"
+                type="hidden"
+        />
+        <field
+                name="title"
+                type="text"
+                label="COM_PRICES_FORM_TITLE"
+                description="COM_PRICES_FORM_UNIT_TITLE_DESC"
+                hint="COM_PRICES_FORM_UNIT_TITLE_HINT"
+                autocomplete="off"
+                required="true"
+                maxlength="255"
+                class="span12"
+        />
+        <field
+                name="weight"
+                type="integer"
+                label="COM_PRICES_FORM_WEIGHT"
+                description="COM_PRICES_FORM_WEIGHT_DESC"
+                hint="COM_PRICES_FORM_WEIGHT_MESSAGE"
+                autocomplete="off"
+                required="true"
+                first="0"
+                last="127"
+                step="1"
+                class="span12"
+        />
+    </fieldset>
+</form>
