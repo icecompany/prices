@@ -167,6 +167,25 @@
             <option value="badge">COM_PRICES_ITEM_TYPE_BADGE</option>
         </field>
         <field
+                name="square_type"
+                type="list"
+                label="COM_PRICES_FORM_ITEM_SQUARE_TYPE"
+                description="COM_PRICES_FORM_ITEM_SQUARE_TYPE_DESC"
+                class="span12"
+                default=""
+                >
+            <option value="">COM_PRICES_FILTER_SELECT_SQUARE_TYPE</option>
+            <option value="1">COM_PRICES_ITEM_SQUARE_TYPE_1</option>
+            <option value="2">COM_PRICES_ITEM_SQUARE_TYPE_2</option>
+            <option value="3">COM_PRICES_ITEM_SQUARE_TYPE_3</option>
+            <option value="4">COM_PRICES_ITEM_SQUARE_TYPE_4</option>
+            <option value="5">COM_PRICES_ITEM_SQUARE_TYPE_5</option>
+            <option value="6">COM_PRICES_ITEM_SQUARE_TYPE_6</option>
+            <option value="7">COM_PRICES_ITEM_SQUARE_TYPE_7</option>
+            <option value="8">COM_PRICES_ITEM_SQUARE_TYPE_8</option>
+            <option value="9">COM_PRICES_ITEM_SQUARE_TYPE_9</option>
+        </field>
+        <field
                 name="disabled"
                 type="radio"
                 class="btn-group btn-group-yesno"

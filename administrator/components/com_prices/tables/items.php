@@ -11,6 +11,7 @@ class TablePricesItems extends Table
     var $unit_1_ID = null;
     var $unit_2_ID = null;
     var $type = null;
+    var $square_type = null;
     var $price_rub = null;
     var $price_usd = null;
     var $price_eur = null;
