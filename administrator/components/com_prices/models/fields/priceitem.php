@@ -25,8 +25,7 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
 
         JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_prj/tables");
         $table = JTable::getInstance('Projects', 'TablePrj');
-        $project = PrjHelper::getActiveProject();
-        if (!is_numeric($project)) $project = 11;
+        $project = PrjHelper::getActiveProject() ?? MkvHelper::getConfig('default_project');
         if (is_numeric($project)) {
             $table->load($project);
             if (is_numeric($table->priceID)) {
