@@ -21,6 +21,7 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
             ->from("`#__mkv_price_items` i")
             ->leftJoin("`#__mkv_price_sections` s on s.id = i.sectionID")
             ->leftJoin("`#__mkv_prices` p on p.id = s.priceID")
+            ->where("i.disabled != 1")
             ->order("i.weight");
 
         JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_prj/tables");
