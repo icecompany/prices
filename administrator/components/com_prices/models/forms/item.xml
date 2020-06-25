@@ -41,6 +41,7 @@
                 required="true"
                 filter="integer"
                 class="span12"
+                default="6"
         />
         <field
                 name="unit_1_ID"
@@ -83,6 +84,7 @@
                 label="COM_PRICES_FORM_ITEM_PRICE_USD"
                 description="COM_PRICES_FORM_ITEM_PRICE_USD_DESC"
                 hint="100.00"
+                default="0"
                 message="COM_PRICES_FORM_ITEM_PRICE_USD_MESSAGE"
                 autocomplete="off"
                 required="true"
@@ -97,6 +99,7 @@
                 label="COM_PRICES_FORM_ITEM_PRICE_EUR"
                 description="COM_PRICES_FORM_ITEM_PRICE_EUR_DESC"
                 hint="100.00"
+                default="0"
                 message="COM_PRICES_FORM_ITEM_PRICE_EUR_MESSAGE"
                 autocomplete="off"
                 required="true"
@@ -165,6 +168,8 @@
             <option value="water">COM_PRICES_ITEM_TYPE_WATER</option>
             <option value="cleaning">COM_PRICES_ITEM_TYPE_CLEANING</option>
             <option value="badge">COM_PRICES_ITEM_TYPE_BADGE</option>
+            <option value="fine">COM_PRICES_ITEM_TYPE_FINE</option>
+            <option value="transfer">COM_PRICES_ITEM_TYPE_TRANSFER</option>
         </field>
         <field
                 name="square_type"
