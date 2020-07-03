@@ -170,6 +170,7 @@
             <option value="badge">COM_PRICES_ITEM_TYPE_BADGE</option>
             <option value="fine">COM_PRICES_ITEM_TYPE_FINE</option>
             <option value="transfer">COM_PRICES_ITEM_TYPE_TRANSFER</option>
+            <option value="reg">COM_PRICES_ITEM_TYPE_REG</option>
         </field>
         <field
                 name="square_type"
