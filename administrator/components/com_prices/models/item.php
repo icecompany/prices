@@ -11,6 +11,14 @@ class PricesModelItem extends AdminModel {
         if ($item->id !== null) {
             $item->watchers = $this->getWatchers($item->id);
         }
+        else {
+            $project = $this->getProject(PrjHelper::getActiveProject(MkvHelper::getConfig('active_project')));
+            //Устанавливаем значения для колонки 2 и 3 по умолчанию в зависимости от активной колонки
+            if ($project->columnID != '1') {
+                $item->column_2 = '1.00';
+                $item->column_3 = '1.00';
+            }
+        }
         return $item;
     }
 
@@ -59,6 +67,14 @@ class PricesModelItem extends AdminModel {
         $table = $this->getTable('Watchers', 'TablePrices');
         $table->load(array('itemID' => $itemID, 'userID' => $userID));
         return $table->delete($table->id);
+    }
+
+    private function getProject(int $projectID)
+    {
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_prj/tables");
+        $table = JTable::getInstance('Projects', 'TablePrj');
+        $table->load($projectID);
+        return $table;
     }
 
     public function getTable($name = 'Items', $prefix = 'TablePrices', $options = array())
