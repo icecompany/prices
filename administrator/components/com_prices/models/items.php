@@ -64,13 +64,14 @@ class PricesModelItems extends ListModel
             $query->where("i.sectionID = {$this->_db->q($section)}");
         }
 
-        $price = $this->getState('filter.price');
-        if (is_numeric($price)) {
+        $projectID = PrjHelper::getActiveProject(MkvHelper::getConfig('default_project'));
+        if (is_numeric($projectID) && !$this->export) {
+            $price = $this->getPriceID($projectID);
             $query->where("s.priceID = {$this->_db->q($price)}");
         }
 
         $disabled = $this->getState('filter.disabled');
-        if (is_numeric($disabled)) {
+        if (is_numeric($disabled) && !$this->export) {
             $query->where("i.disabled = {$this->_db->q($disabled)}");
         }
 
@@ -78,6 +79,14 @@ class PricesModelItems extends ListModel
         $this->setState('list.limit', $limit);
 
         return $query;
+    }
+
+    private function getPriceID(int $projectID): int
+    {
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_prj/tables");
+        $table = JTable::getInstance('Projects', 'TablePrj');
+        $table->load($projectID);
+        return $table->priceID;
     }
 
     public function getItems()
@@ -114,10 +123,6 @@ class PricesModelItems extends ListModel
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
-        $price = $this->getUserStateFromRequest($this->context . '.filter.price', 'filter_price');
-        $this->setState('filter.price', $price);
-        $section = $this->getUserStateFromRequest($this->context . '.filter.section', 'filter_section');
-        $this->setState('filter.section', $section);
         $disabled = $this->getUserStateFromRequest($this->context . '.filter.disabled', 'filter_disabled');
         $this->setState('filter.disabled', $disabled);
         parent::populateState($ordering, $direction);
@@ -127,8 +132,6 @@ class PricesModelItems extends ListModel
     protected function getStoreId($id = '')
     {
         $id .= ':' . $this->getState('filter.search');
-        $id .= ':' . $this->getState('filter.price');
-        $id .= ':' . $this->getState('filter.section');
         $id .= ':' . $this->getState('filter.disabled');
         return parent::getStoreId($id);
     }

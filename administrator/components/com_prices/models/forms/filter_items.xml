@@ -11,24 +11,6 @@
                 class="js-stools-search-string"
         />
         <field
-                name="price"
-                type="Price"
-                label="COM_PRICES_FILTER_SELECT_PRICE"
-                description="COM_PRICES_FILTER_SELECT_PRICE"
-                onchange="this.form.submit()"
-                >
-            <option value="">COM_PRICES_FILTER_SELECT_PRICE</option>
-        </field>
-        <field
-                name="section"
-                type="Section"
-                label="COM_PRICES_FILTER_SELECT_SECTION"
-                description="COM_PRICES_FILTER_SELECT_SECTION"
-                onchange="this.form.submit()"
-                >
-            <option value="">COM_PRICES_FILTER_SELECT_SECTION</option>
-        </field>
-        <field
                 name="disabled"
                 type="list"
                 label="COM_PRICES_FILTER_ITEMS_SELECT_DISABLED"
@@ -43,28 +25,8 @@
     <fields name="list">
         <field
                 name="fullordering"
-                type="list"
-                label="COM_PRICES_FILTER_SELECT_FULL_ORDERING"
-                description="COM_PRICES_FILTER_SELECT_FULL_ORDERING_DESC"
-                onchange="this.form.submit();"
-                default="title asc"
-        >
-            <option value="">JGLOBAL_SORT_BY</option>
-            <option value="i.title ASC">COM_PRICES_SORTING_TITLE_ASC</option>
-            <option value="i.title DESC">COM_PRICES_SORTING_TITLE_DESC</option>
-            <option value="price ASC">COM_PRICES_SORTING_SECTIONS_PRICE_TITLE_ASC</option>
-            <option value="price DESC">COM_PRICES_SORTING_SECTIONS_PRICE_TITLE_DESC</option>
-            <option value="section ASC">COM_PRICES_SORTING_ITEMS_SECTION_TITLE_ASC</option>
-            <option value="section DESC">COM_PRICES_SORTING_ITEMS_SECTION_TITLE_DESC</option>
-            <option value="i.weight ASC">COM_PRICES_SORTING_WEIGHT_ASC</option>
-            <option value="i.weight DESC">COM_PRICES_SORTING_WEIGHT_DESC</option>
-            <option value="i.disabled ASC">COM_PRICES_SORTING_ITEMS_DISABLED_ASC</option>
-            <option value="i.disabled DESC">COM_PRICES_SORTING_ITEMS_DISABLED_DESC</option>
-            <option value="i.price_rub ASC">COM_PRICES_SORTING_ITEMS_PRICE_RUB_ASC</option>
-            <option value="i.price_rub DESC">COM_PRICES_SORTING_ITEMS_PRICE_RUB_DESC</option>
-            <option value="i.id ASC">COM_PRICES_SORTING_ID_ASC</option>
-            <option value="i.id DESC">COM_PRICES_SORTING_ID_DESC</option>
-        </field>
+                type="hidden"
+        />
         <field
                 name="limit"
                 type="limitbox"

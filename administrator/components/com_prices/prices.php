@@ -22,6 +22,7 @@ if (!Factory::getUser()->authorise('core.manage', 'com_prices'))
 
 // Require the helper
 require_once JPATH_ADMINISTRATOR . "/components/com_prj/helpers/prj.php";
+require_once JPATH_ADMINISTRATOR . "/components/com_mkv/helpers/mkv.php";
 require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/prices.php';
 
 // Execute the task
