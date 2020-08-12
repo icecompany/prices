@@ -21,6 +21,8 @@ class TablePricesItems extends Table
     var $title = null;
     var $title_en = null;
     var $disabled = null;
+    var $available = null;
+    var $need_period = null;
     var $weight = null;
 
 	public function __construct(JDatabaseDriver $db)
