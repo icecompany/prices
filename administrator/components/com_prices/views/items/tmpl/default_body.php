@@ -18,6 +18,9 @@ foreach ($this->items['items'] as $i => $item) :
             <?php echo $item['price_rub'];?>
         </td>
         <td>
+            <?php echo $item['available'];?>
+        </td>
+        <td>
             <?php echo $item['section'];?>
         </td>
         <td>

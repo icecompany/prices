@@ -17,6 +17,9 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_COST', 'i.price_rub', $listDirn, $listOrder); ?>
     </th>
     <th>
+        <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_AVAILABLE', 'i.available', $listDirn, $listOrder); ?>
+    </th>
+    <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_PRICES_HEAD_ITEMS_SECTION_TITLE', 'section', $listDirn, $listOrder); ?>
     </th>
     <th>

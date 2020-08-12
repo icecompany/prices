@@ -14,6 +14,7 @@ class PricesModelItems extends ListModel
                 'i.price_rub',
                 'i.weight',
                 'i.disabled',
+                'i.available',
                 'section',
                 'price',
                 'disabled',
@@ -38,7 +39,7 @@ class PricesModelItems extends ListModel
         $limit = (!$this->export) ? $this->getState('list.limit') : 0;
 
         $query
-            ->select("i.id, i.title, i.type, i.price_rub, i.column_1, i.column_2, i.column_3, i.disabled, i.weight")
+            ->select("i.id, i.title, i.type, i.price_rub, i.column_1, i.column_2, i.column_3, i.disabled, i.weight, i.available")
             ->select("s.title as section, p.title as price")
             ->from("#__mkv_price_items i")
             ->leftJoin("`#__mkv_price_sections` s on s.id = i.sectionID")
@@ -107,6 +108,7 @@ class PricesModelItems extends ListModel
             $arr['column_1'] = sprintf("%d%%", $this->convertToPercent($item->column_1));
             $arr['column_2'] = sprintf("%d%%", $this->convertToPercent($item->column_2));
             $arr['column_3'] = sprintf("%d%%", $this->convertToPercent($item->column_3));
+            $arr['available'] = $item->available ?? JText::sprintf('COM_PRICES_FORM_ITEM_AVAILABLE_FREE');
             $url = JRoute::_("index.php?option={$this->option}&amp;task=item.edit&amp;id={$item->id}");
             $arr['edit_link'] = JHtml::link($url, $item->title);
             $result['items'][] = $arr;
