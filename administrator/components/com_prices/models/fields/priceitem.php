@@ -15,11 +15,13 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
         $query = $db->getQuery(true);
 
         $query
-            ->select("i.id, i.title as item")
+            ->select("i.id, i.title as item, i.available")
+            ->select("un.title as unit")
             ->select("s.title as section")
             ->select("p.title as price")
             ->from("`#__mkv_price_items` i")
             ->leftJoin("`#__mkv_price_sections` s on s.id = i.sectionID")
+            ->leftJoin("#__mkv_price_units un on un.id = i.unit_1_ID")
             ->leftJoin("`#__mkv_prices` p on p.id = s.priceID")
             ->order("i.weight");
 
@@ -55,7 +57,9 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
         if ($result) {
             foreach ($result as $p) {
                 if (!isset($options[$p->section])) $options[$p->section] = [];
-                $options[$p->section][] = JHtml::_('select.option', $p->id, $p->item);
+                $title = $p->item;
+                if ($p->available > 0) $title .= " (" . JText::sprintf('COM_PRICES_TEXT_AVAILABLE_N_ITEMS', $p->available, $p->unit) . ")";
+                $options[$p->section][] = JHtml::_('select.option', $p->id, $title);
             }
         }
 
