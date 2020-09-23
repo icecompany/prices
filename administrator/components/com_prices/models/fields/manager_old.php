@@ -3,9 +3,9 @@ defined('_JEXEC') or die;
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
-class JFormFieldManager extends JFormFieldList
+class JFormFieldManager_old extends JFormFieldList
 {
-    protected $type = 'Manager';
+    protected $type = 'Manager_old';
     protected $loadExternally = 0;
 
     protected function getOptions()

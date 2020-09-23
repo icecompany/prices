@@ -87,6 +87,7 @@ class PricesModelItem extends AdminModel {
         $form = $this->loadForm(
             $this->option.'.item', 'item', array('control' => 'jform', 'load_data' => $loadData)
         );
+        $form->addFieldPath(JPATH_ADMINISTRATOR."/components/com_mkv/models/fields");
         if (empty($form))
         {
             return false;
