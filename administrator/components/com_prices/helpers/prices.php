@@ -12,6 +12,7 @@ class PricesHelper
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRICES_MENU_WATCHERS'), 'index.php?option=com_prices&view=watchers', $vName === 'watchers');
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRICES_MENU_SECTIONS'), 'index.php?option=com_prices&view=sections', $vName === 'sections');
 		HTMLHelper::_('sidebar.addEntry', JText::sprintf('COM_PRICES_MENU_UNITS'), 'index.php?option=com_prices&view=units', $vName === 'units');
+        PrjHelper::addActiveProjectFilter();
 	}
 
     /**
