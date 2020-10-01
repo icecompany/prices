@@ -27,6 +27,7 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
 
         $input = JFactory::getApplication()->input;
         $id = $input->getInt('id', 0);
+
         //Добавляем текущий пункт прайса, даже если доступно к заказу 0
         if ($input->getString('option') == 'com_contracts' && $input->getString('view') == 'item') {
             JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_contracts/tables");
@@ -40,9 +41,14 @@ class JFormFieldPriceItem extends JFormFieldGroupedList
             }
         }
 
+        //Фильтруем - выбираем только пункты из прайса, который указан в настройках проекта, к которому привязана сделка
+        $contractID = JFactory::getApplication()->getUserState('com_contracts.item.contractID', 0);
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_contracts/tables");
+        $ct = JTable::getInstance('Contracts', 'TableContracts');
+        $ct->load($contractID);
         JTable::addIncludePath(JPATH_ADMINISTRATOR . "/components/com_prj/tables");
         $table = JTable::getInstance('Projects', 'TablePrj');
-        $project = PrjHelper::getActiveProject() ?? MkvHelper::getConfig('default_project');
+        $project = $ct->projectID;
         if (is_numeric($project)) {
             $table->load($project);
             if (is_numeric($table->priceID)) {
