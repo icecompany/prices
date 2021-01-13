@@ -158,6 +158,7 @@
                 hint="50"
                 default=""
                 class="span12"
+                autocomplete="false"
         />
     </fieldset>
     <fieldset name="advanced">
