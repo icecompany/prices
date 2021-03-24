@@ -6,6 +6,13 @@
                 type="hidden"
         />
         <field
+                name="equipmentID"
+                type="PriceEquipment"
+                label="COM_PRICES_FORM_EQUIPMENT_TYPE_LABEL"
+                description="COM_PRICES_FORM_EQUIPMENT_TYPE_DESC"
+                class="span12"
+        />
+        <field
                 name="title"
                 type="text"
                 label="COM_PRICES_FORM_TITLE"
