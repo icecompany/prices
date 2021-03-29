@@ -111,7 +111,7 @@ class PricesModelItem extends AdminModel {
     {
         $all = get_class_vars($table);
         unset($all['_errors']);
-        $nulls = ['type', 'square_type', 'unit_2_ID', 'title_en', 'available']; //Поля, которые NULL
+        $nulls = ['equipmentID', 'type', 'square_type', 'unit_2_ID', 'title_en', 'available']; //Поля, которые NULL
         foreach ($all as $field => $v) {
             if (empty($field)) continue;
             if (in_array($field, $nulls)) {

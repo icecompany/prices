@@ -11,7 +11,9 @@
                 label="COM_PRICES_FORM_EQUIPMENT_TYPE_LABEL"
                 description="COM_PRICES_FORM_EQUIPMENT_TYPE_DESC"
                 class="span12"
-        />
+        >
+                <option value="">COM_PRICES_FILTER_SELECT_EQUIPMENT_TYPE</option>
+        </field>
         <field
                 name="title"
                 type="text"

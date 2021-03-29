@@ -7,6 +7,7 @@ class TablePricesItems extends Table
 {
     var $id = null;
     var $sectionID = null;
+    var $equipmentID = null;
     var $appID = null;
     var $unit_1_ID = null;
     var $unit_2_ID = null;
