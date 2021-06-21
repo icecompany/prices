@@ -191,6 +191,7 @@
             <option value="transfer">COM_PRICES_ITEM_TYPE_TRANSFER</option>
             <option value="transferred">COM_PRICES_ITEM_TYPE_TRANSFERRED</option>
             <option value="reg">COM_PRICES_ITEM_TYPE_REG</option>
+            <option value="welcome">COM_PRICES_ITEM_TYPE_WELCOME</option>
             <option value="technical">COM_PRICES_ITEM_TYPE_TECHNICAL</option>
         </field>
         <field
